@@ -40,7 +40,7 @@
 #include "g2o/solvers/structure_only/structure_only_solver.h"
 #include "g2o/solvers/pcg/linear_solver_pcg.h"
 
-#include "EXTERNAL/ceres/autodiff.h"
+#include "g2o/core/ceres/autodiff.h"
 
 #if defined G2O_HAVE_CHOLMOD
 #include "g2o/solvers/cholmod/linear_solver_cholmod.h"
@@ -266,6 +266,7 @@ class EdgeObservationBAL : public BaseBinaryEdge<2, Vector2d, VertexCameraBAL, V
                               const_cast<number_t*>(point->estimate().data())};
       number_t* jacobians[] = {dError_dCamera.data(), dError_dPoint.data()};
       number_t value[Dimension];
+      
       using BalAutoDiffDims =
           ceres::internal::StaticParameterDims<VertexCameraBAL::Dimension, VertexPointBAL::Dimension>;
       bool diffState =

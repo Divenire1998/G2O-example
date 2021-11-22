@@ -14,7 +14,6 @@ add_subdirectory(sba)
 add_subdirectory(sim3)
 add_subdirectory(simple_optimize)
 add_subdirectory(sphere)
-add_subdirectory(target)
 add_subdirectory(tutorial_slam2d)
 
 if(Qt5_FOUND AND QGLVIEWER_FOUND)

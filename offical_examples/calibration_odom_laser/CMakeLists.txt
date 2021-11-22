@@ -1,4 +1,4 @@
-add_library(calibration_odom_laser_library ${G2O_LIB_TYPE}
+add_library(calibration_odom_laser_library SHARED
   gm2dl_io.cpp gm2dl_io.h
   sclam_helpers.cpp sclam_helpers.h
   motion_information.h
@@ -7,7 +7,7 @@ add_library(calibration_odom_laser_library ${G2O_LIB_TYPE}
   g2o_calibration_odom_laser_api.h
 )
 set_target_properties(calibration_odom_laser_library PROPERTIES OUTPUT_NAME ${LIB_PREFIX}calibration_odom_laser)
-target_link_libraries(calibration_odom_laser_library core solver_eigen types_sclam2d types_data)
+target_link_libraries(calibration_odom_laser_library g2o_core g2o_solver_eigen g2o_types_slam2d g2o_types_data g2o_stuff g2o_types_sclam2d)
 
 add_executable(sclam_odom_laser
   sclam_odom_laser.cpp

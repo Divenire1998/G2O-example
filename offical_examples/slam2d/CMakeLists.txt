@@ -32,7 +32,7 @@ if(Qt5_POSITION_INDEPENDENT_CODE)
     #       does not seem to work: This generates some libraries with -fPIE which is not enough for Qt...
 endif()
 
-target_link_libraries(slam2d_g2o core solver_eigen types_slam2d
+target_link_libraries(slam2d_g2o g2o_core g2o_solver_eigen g2o_types_slam2d g2o_stuff
     ${QGLVIEWER_LIBRARY}
     ${Qt5Core_LIBRARIES}
     ${Qt5Gui_LIBRARIES}
@@ -40,4 +40,5 @@ target_link_libraries(slam2d_g2o core solver_eigen types_slam2d
     ${Qt5Widgets_LIBRARIES}
     ${Qt5OpenGL_LIBRARIES}
     ${OPENGL_gl_LIBRARY} ${OPENGL_glu_LIBRARY}
+    GL
 )

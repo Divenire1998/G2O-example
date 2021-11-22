@@ -1,7 +1,7 @@
 add_executable(polynomial_fit polynomial_fit.cpp)
 set_target_properties(polynomial_fit PROPERTIES OUTPUT_NAME polynomial_fit${EXE_POSTFIX})
-target_link_libraries(polynomial_fit core solver_eigen)
+target_link_libraries(polynomial_fit g2o_core g2o_solver_eigen g2o_stuff)
 
 add_executable(static_dynamic_function_fit static_dynamic_function_fit.cpp)
 set_target_properties(static_dynamic_function_fit PROPERTIES OUTPUT_NAME static_dynamic_function_fit${EXE_POSTFIX})
-target_link_libraries(static_dynamic_function_fit core solver_eigen)
+target_link_libraries(static_dynamic_function_fit g2o_core g2o_solver_eigen g2o_stuff)
