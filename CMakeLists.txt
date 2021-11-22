@@ -53,6 +53,14 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 find_package(g2o REQUIRED)
 include_directories(${G2O_INCLUDE_DIR})
 
+# SET(G2O_LIBS
+# g2o_cli g2o_ext_freeglut_minimal g2o_simulator g2o_solver_slam2d_linear 
+# g2o_types_icp g2o_types_slam2d g2o_core g2o_interface g2o_solver_csparse g2o_solver_structure_only
+# g2o_types_sba g2o_types_slam3d g2o_csparse_extension g2o_opengl_helper g2o_solver_dense g2o_stuff 
+# g2o_types_sclam2d g2o_parser g2o_solver_pcg g2o_types_data g2o_types_sim3 cxsparse 
+# )
+
+
 #Cholmod
 find_package(Cholmod REQUIRED)
 include_directories(${CHOLMOD_LIBRARIES})
@@ -61,12 +69,11 @@ include_directories(${CHOLMOD_LIBRARIES})
 find_package(CSparse REQUIRED)
 include_directories(${CSPARSE_INCLUDE_DIR})
 
-# For building the GUI
+# QGLViewer For building the GUI
 find_package(QGLViewer)
 
-
+# OPENGL
 find_package(OpenGL)
-# If OpenGL was found, use the import target if available. If not, use old-style includes
 set(G2O_USE_OPENGL ON CACHE BOOL "Build g2o with OpenGL support for visualization")
 if (OPENGL_FOUND AND G2O_USE_OPENGL)
   if (TARGET OpenGL::GL)
@@ -80,10 +87,20 @@ if (OPENGL_FOUND AND G2O_USE_OPENGL)
   #message(WARNING G2O_OPENGL_TARGET=${G2O_OPENGL_TARGET})
 endif()
 
+# OPENCV
+find_package(OpenCV REQUIRED)
+
 ############################################################
 # 输出可执行文件
 ############################################################
-## 二进制文件输出路径
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/exe)
+# 二进制文件输出路径
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
+# 设定库文件编译路径
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
+############################################################
+# 加入子文件夹
+############################################################
 add_subdirectory(offical_examples)
+add_subdirectory(other_example)
+

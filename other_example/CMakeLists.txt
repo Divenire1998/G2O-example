@@ -1,0 +1,4 @@
+add_subdirectory(g2o_ba_example)
+# add_subdirectory(g2o_pose_optimization)
+add_subdirectory(GraphSLAM_tutorials_code)
+
